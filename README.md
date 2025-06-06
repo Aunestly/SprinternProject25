@@ -2,10 +2,10 @@
 
 ## Table of Contents
 - [Project Overview](https://github.com/JasmineH12/Sprinternship/blob/main/README.md)
-- [Objective](link)
-- [Goals](link)
-- [Methodology](link)
-- [Results](link)
+- [Objective](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#objective)
+- [Goals](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#goals)
+- [Methodology](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#methodology)
+- [Results](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#results)
 - [Key Findings](link)
 - [Visualizations](link)
 - [Future Work](link)
