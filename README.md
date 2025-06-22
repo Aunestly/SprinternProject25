@@ -46,5 +46,17 @@ Deployed AutoML model. A prototype performing inference and full metadata extrac
 
 Protype  script capable of getting detections and attempting OCR-based tag linking. AutoML metrics gained.
 
+## Key Findings
+* _A script's execution environment (including installed libraries like pandas, and the system's PATH variable) is as crucial as the code._ Troubleshooting showed how using virtual environments (venv) is essential for managing dependencies locally. We discovered that code that works perfectly in the Cloud Shell can fail on a local machine if the necessary tools aren't installed or accessible. We encountered gcloud: The term 'gcloud' is not recognized and pip: The term 'pip' is not recognized, which were purely environmental setup issues.
+
+* _TypeError: string indices must be integers deep within the Google authentication library but was caused by a temporary glitch in how the Cloud Shell environment was retrieving its own identity from Google's metadata server._ A simple restart of the Cloud Shell session resolved it completely. When working with cloud services, authentication is happening constantly. Internal errors would occur and one of the simplest solutions were to restart, re-authenticate with gcloud auth application-default login.
+  
+* _Improved our code based on initial results with iterative approach by continuously refining it based on new requirements and viewing the output._ 1. Displayed a basic table with tabulate. 2. Changed output to a bar chart with pandas and matplotlib. 3. Saved the plot to a file when it wouldn't display interactively. 4. Refined the visual style: making bars wider, changed the color pattern, and settling on "Google blue bars." 5. Refined the data presentation: adding total counts, and then changing the sorting order multiple times (by count, alphabetically, and finally numerically).
+  
+* _Building a significant amount of "scaffolding" to transform raw data into different formats._ The P&ID AutoML model's output was only structured data (lists of names, confidences, and bounding boxes). Initial results were outputed as plots and later into the specific list of dictionaries that our chatbot could understand. Identified data gaps, like the tag_id, which the model doesn't provide and requires another process (like OCR) to fill. The real work was in the "last mile" integration—building the application, translating the model's raw intelligence into a human-usable format was key.
+  
+* _Moving the logic from a simple command-line script (detection2.py) to a Flask web application (app.py) highlighted major differences in how applications work._ Adapting from a CLI Script to a Web App Involves Fundamental Shifts. We went from a hardcoded GCS_IMAGE_URI to handling dynamic user input via an HTML form that uploads a file.
+
+*_Rethinking command-line requests_ The application went from print() statements and saving PNGs directly (plt.savefig) to returning HTML templates and JSON data from API-like routes (/get_chat_response). The plt.show() not working was a clear example of how command-line behavior doesn't translate directly to a web server context. In the web app, we had to manage the state of the application's data (EQUIPMENT_DATA) using a global variable so that it would persist between the image processing step and subsequent chat queries. Deploying a model isn't just about the model itself, but about building a new application paradigm around it, whether it's a simple script or a complex web app.
 
   
