@@ -1,5 +1,11 @@
 # AutoML P&ID Equipment Detector (POC)
+## Technologies Used:
+ Access to:
+* Google Cloud Console (for the UI method) or 
+* Google Cloud SDK (gcloud) 
+ installed and authenticated on a local machine or Cloud Shell (for the command-line method).
 
+ 
 ## Table of Contents
 - [Project Overview](https://github.com/JasmineH12/Sprinternship/blob/main/README.md)
 - [Objective](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#objective)
@@ -29,17 +35,38 @@ A team of students developed a Proof-of-Concept using Google Cloud to identify s
 ## Methodology
 1. The data engineer and technical assistant used a python code, located in [here](https://github.com/JasmineH12/Sprinternship/blob/main/converting_to_ML_readable.py) to reformat numpy files.
 2. Once the data was reformated and values were normalized for each bounding box, the file was then uploaded to the bucket in Google Cloud Storage.
-3. This data was imported into Vertex AI for further analysis.
+3. This data was imported into Vertex AI for further analysis.  Our model underwent training and is visibly in the Vertex AI Model Registry. For this project, our model was named pippingandinstrumentaldiagrams and associated with a dataset ID.
 4. To begin training our model for object detectiom we ran 4 versions, altering the average precision, precision, and recall.
 5. Next we selected the model with the best training results of Average Precision: 72.5%, Precision: 95.7%, Recall: 71%.
 6. This models training capacity consisted of 500 images, 400 training images, 49 validation images, 51 test images on 200 node hours.
 7. AutoML image object detection model successfully finished training in 7 hours and 54 minutes, using 67.3 out of a 200 node-hour budget to process the items that were randomly split 80/10/10 for training, validation, and testing.
-8. In order to test the model, we deployed it to a Vertex AI endpoint for online predictions.
+8. In order to test the model, we deployed it to a Vertex AI endpoint for online predictions. The Vertex AI API was also enabled in your Google Cloud project.  
 9. Refined the symbol detection script to generate the full structured metadata output for each image into a table.
 10. Refined the symbol detection script to generate an image with detected symbols surrounded by bounding box, symbol name and confidence.
 11. Refined the symbol detection script to generate a bar graph to display symbol name and symbol quantity by desired confidence level.
-12. Python developer Integrated deployed model with a web application and chatbot developed by the AutoML trainer.
-13. 
+12. Python developer began the process of integrating our deployed model with a web application and chatbot developed by the AutoML trainer.
+13.  To deploy the model we used a combination of concepts.  We configured the Endpoint by "Deploying to a new endpoint"  and created an Endpoint Name: for the purpose of the project we chose hello_automl_image.
+14. Ensured the region matches the model's region (us-central1). and began configuring the Deployed Model Settings which included: Traffic Split: 100%; Machine Type: AutoML often managed the machine type selection for us.
+15. Configured the scaling. In initial testing, setting Minimum compute nodes to 1 was the most cost-effective. Next we ready to deploy the model.
+16. Once the deployment process began. Vertex AI provisioned resources and deployed the model container.
+17. Next we used the Google Cloud SDK (Command-Line Approach). This method was ideal for automation and integration into scripts.
+18.  Next we took the endpoint resource itself. Run the following command in our terminal (Cloud Shell or a locally configured SDK):
+Bash
+gcloud ai endpoints create \
+  --project="PROJECT NAME" \
+  --region="REGION" \
+  --display-name="hello_automl_image"
+19. The endpoint ID can be found in the model registry, or by doing the above command.
+20. Next the Python Developer deployed the Model to the Endpoint which was the final step that links the trained model to the live endpoint.
+21. The command requires your model ID and the endpoint ID created in step 18.
+Bash
+gcloud ai models deploy <MODEL_ID> \
+  --project="PROJECT NAME" \
+  --region="REGION" \
+  --endpoint=<ENDPOINT_ID> \
+  --display-name="displayname \
+  --traffic-split="0=100"
+22. The ultimate verification was running our Python script using the final Endpoint ID (2060384734894096384). The fact that we successfully received predictions and generated plots confirms that the model was deployed correctly and is actively serving requests.
 
 ## Results
 Deployed AutoML model. A prototype performing inference and full metadata extraction for target symbols. Evaluation report complete. Bonus chatbot functional
@@ -59,4 +86,4 @@ Protype  script capable of getting detections and attempting OCR-based tag linki
 
 * _Rethinking command-line requests_ The application went from print() statements and saving PNGs directly (plt.savefig) to returning HTML templates and JSON data from API-like routes (/get_chat_response). The plt.show() not working was a clear example of how command-line behavior doesn't translate directly to a web server context. In the web app, we had to manage the state of the application's data (EQUIPMENT_DATA) using a global variable so that it would persist between the image processing step and subsequent chat queries. Deploying a model isn't just about the model itself, but about building a new application paradigm around it, whether it's a simple script or a complex web app.
 
-  
+## Methodology
