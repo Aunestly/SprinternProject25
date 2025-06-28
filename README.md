@@ -1,9 +1,10 @@
 # AutoML P&ID Equipment Detector (POC)
 ## Technologies Used:
- Access to:
+
 * Google Cloud Console (for the UI method) or 
 * Google Cloud SDK (gcloud) 
- installed and authenticated on a local machine or Cloud Shell (for the command-line method).
+ installed and authenticated on a local machine or Cloud Shell (for the command-line method
+* Gemini AI
 
  
 ## Table of Contents
