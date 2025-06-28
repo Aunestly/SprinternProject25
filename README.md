@@ -66,7 +66,7 @@ gcloud ai models deploy <MODEL_ID> \
   --endpoint=<ENDPOINT_ID> \
   --display-name="displayname \
   --traffic-split="0=100"
-22. The ultimate verification was running our Python script using the final Endpoint ID (2060384734894096384). The fact that we successfully received predictions and generated plots confirms that the model was deployed correctly and is actively serving requests.
+22. The ultimate verification was running our Python script using the final Endpoint ID (19 digit number). We successfully received predictions and generated plots confirms that the model was deployed correctly and is actively serving requests.
 
 ## Results
 Deployed AutoML model. A prototype performing inference and full metadata extraction for target symbols. Evaluation report complete. Bonus chatbot functional
@@ -86,4 +86,4 @@ Protype  script capable of getting detections and attempting OCR-based tag linki
 
 * _Rethinking command-line requests_ The application went from print() statements and saving PNGs directly (plt.savefig) to returning HTML templates and JSON data from API-like routes (/get_chat_response). The plt.show() not working was a clear example of how command-line behavior doesn't translate directly to a web server context. In the web app, we had to manage the state of the application's data (EQUIPMENT_DATA) using a global variable so that it would persist between the image processing step and subsequent chat queries. Deploying a model isn't just about the model itself, but about building a new application paradigm around it, whether it's a simple script or a complex web app.
 
-## Methodology
+## Visualizations
