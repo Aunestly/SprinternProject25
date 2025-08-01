@@ -85,8 +85,8 @@ TypeError: string indices must be integers deep within the Google authentication
   
 Improved our code based on initial results with iterative approach by continuously refining it based on new requirements and viewing the output.
 * _1. Displayed a basic table with tabulate. 2. Changed output to a bar chart with pandas and matplotlib. 3. Saved the plot to a file when it wouldn't display interactively. 4. Refined the visual style: making bars wider, changed the color pattern, and settling on "Google blue bars." 5. Refined the data presentation: adding total counts, and then changing the sorting order multiple times (by count, alphabetically, and finally numerically)._
-  
-  Building a significant amount of "scaffolding" to transform raw data into different formats.
+
+Building a significant amount of "scaffolding" to transform raw data into different formats.
   
 * _The P&ID AutoML model's output was only structured data (lists of names, confidences, and bounding boxes). Initial results were outputed as plots and later into the specific list of dictionaries that our chatbot could understand. Identified data gaps, like the tag_id, which the model doesn't provide and requires another process (like OCR) to fill. The real work was in the "last mile" integration—building the application, translating the model's raw intelligence into a human-usable format was key._
   
