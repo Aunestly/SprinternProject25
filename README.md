@@ -75,9 +75,13 @@ Deployed AutoML model. A prototype performing inference and full metadata extrac
 Protype  script capable of getting detections and attempting OCR-based tag linking. AutoML metrics gained.
 
 ## Key Findings
-* _A script's execution environment (including installed libraries like pandas, and the system's PATH variable) is as crucial as the code._ Troubleshooting showed how using virtual environments (venv) is essential for managing dependencies locally. We discovered that code that works perfectly in the Cloud Shell can fail on a local machine if the necessary tools aren't installed or accessible. We encountered gcloud: The term 'gcloud' is not recognized and pip: The term 'pip' is not recognized, which were purely environmental setup issues.
+* _A script's execution environment (including installed libraries like pandas, and the system's PATH variable) is as crucial as the code._
 
-* _TypeError: string indices must be integers deep within the Google authentication library but was caused by a temporary glitch in how the Cloud Shell environment was retrieving its own identity from Google's metadata server._ A simple restart of the Cloud Shell session resolved it completely. When working with cloud services, authentication is happening constantly. Internal errors would occur and one of the simplest solutions were to restart, re-authenticate with gcloud auth application-default login.
+Troubleshooting showed how using virtual environments (venv) is essential for managing dependencies locally. We discovered that code that works perfectly in the Cloud Shell can fail on a local machine if the necessary tools aren't installed or accessible. We encountered gcloud: The term 'gcloud' is not recognized and pip: The term 'pip' is not recognized, which were purely environmental setup issues.
+
+* _TypeError: string indices must be integers deep within the Google authentication library but was caused by a temporary glitch in how the Cloud Shell environment was retrieving its own identity from Google's metadata server._
+
+A simple restart of the Cloud Shell session resolved it completely. When working with cloud services, authentication is happening constantly. Internal errors would occur and one of the simplest solutions were to restart, re-authenticate with gcloud auth application-default login.
   
 * _Improved our code based on initial results with iterative approach by continuously refining it based on new requirements and viewing the output._ 1. Displayed a basic table with tabulate. 2. Changed output to a bar chart with pandas and matplotlib. 3. Saved the plot to a file when it wouldn't display interactively. 4. Refined the visual style: making bars wider, changed the color pattern, and settling on "Google blue bars." 5. Refined the data presentation: adding total counts, and then changing the sorting order multiple times (by count, alphabetically, and finally numerically).
   
