@@ -84,7 +84,7 @@ TypeError: string indices must be integers deep within the Google authentication
 * _A simple restart of the Cloud Shell session resolved it completely. When working with cloud services, authentication is happening constantly. Internal errors would occur and one of the simplest solutions were to restart, re-authenticate with gcloud auth application-default login._
   
 Improved our code based on initial results with iterative approach by continuously refining it based on new requirements and viewing the output.
-* _1. Displayed a basic table with tabulate. 2. Changed output to a bar chart with pandas and matplotlib. 3. Saved the plot to a file when it wouldn't display interactively. 4. Refined the visual style: making bars wider, changed the color pattern, and settling on "Google blue bars." 5. Refined the data presentation: adding total counts, and then changing the sorting order multiple times (by count, alphabetically, and finally numerically)._
+* _Displayed a basic table with tabulate. 2. Changed output to a bar chart with pandas and matplotlib. 3. Saved the plot to a file when it wouldn't display interactively. 4. Refined the visual style: making bars wider, changed the color pattern, and settling on "Google blue bars." 5. Refined the data presentation: adding total counts, and then changing the sorting order multiple times (by count, alphabetically, and finally numerically)._
 
 Building a significant amount of "scaffolding" to transform raw data into different formats.
   
