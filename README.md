@@ -13,7 +13,7 @@
 - [Goals](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#goals)
 - [Methodology](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#methodology)
 - [Results](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#results)
-- [Key Findings](link)
+- [Key Findings](https://github.com/Aunestly/SprinternProject25?tab=readme-ov-file#key-findings)
 - [Visualizations](link)
 - [Future Work](link)
 - [Individual Contributions](link)
